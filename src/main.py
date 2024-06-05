@@ -1,4 +1,5 @@
 import flet as ft
+from setting_parameter import FletSettingParameter
 
 class FletApp(object):
     def __init__(self, page):
@@ -15,6 +16,10 @@ class FletApp(object):
         # スクロールを設定
         self.page.scroll = ft.ScrollMode.AUTO
 
+        # 設定編集機能追加
+        self.SettingParameterClass = FletSettingParameter(page)
+
+
     def page_header_create(self):
         # appbarの作成
         self.page.appbar = ft.AppBar(
@@ -25,6 +30,7 @@ class FletApp(object):
             bgcolor=ft.colors.INDIGO_600,
             actions=[
                 ft.IconButton(ft.icons.HOME, icon_color="white", on_click=self.home_icon_button_click),
+                ft.IconButton(ft.icons.SETTINGS_OUTLINED, icon_color="white", on_click=self.SettingParameterClass.setting_icon_button_click),
             ],
         )
 
